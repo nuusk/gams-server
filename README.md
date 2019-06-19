@@ -1,4 +1,4 @@
-# gams
+# G A M S
 
 Create your profile and play games with your friends.
 
@@ -27,7 +27,7 @@ Push to master for production build.
 
 ## Authors
 
-* **Siogop** - *Initial work* - [Siogop](https://github.com/siogop)
+* **Pogoś** - *Initial work* - [Siogop](https://github.com/siogop)
 * **poe** - *Initial work* - [pietersweter](https://github.com/pietersweter)
 
 ## License
