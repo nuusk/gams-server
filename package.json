@@ -1,5 +1,5 @@
 {
-  "name": "tiwpr-placeholder-server",
+  "name": "gams-server",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -14,6 +14,7 @@
     "eslint-config-airbnb-base": "^13.1.0"
   },
   "dependencies": {
+    "dotenv": "^8.0.0",
     "fastify": "^2.5.0"
   }
 }

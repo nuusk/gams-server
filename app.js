@@ -1,4 +1,6 @@
-const PORT = 4044;
+require('dotenv').config();
+
+const { PORT } = process.env;
 
 const fastify = require('fastify')({
   logger: true,
