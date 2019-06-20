@@ -1,19 +1,30 @@
 require('dotenv').config();
+const debug = require('debug')('app');
+const express = require('express');
+const indexRouter = require('./routes/index');
+const gamesRouter = require('./routes/games');
+const db = require('./db');
 
-const { PORT } = process.env;
+const {
+  PORT, DEBUG,
+} = process.env;
+debug.enabled = DEBUG;
+const port = PORT | 4044;
 
-const fastify = require('fastify')({
-  logger: true,
-});
+const app = express();
 
-// * * * * ROUTES PLUGIN * * * *
-fastify.register(require('./routes'));
+app.use('/', indexRouter);
+app.use('/games', gamesRouter);
 
+(async function start() {
+  await db.connect().catch((err) => {
+    /* istanbul ignore next */
+    debug(err);
+  });
 
-fastify.listen(PORT | 4044, '0.0.0.0', (err, address) => {
-  if (err) {
-    fastify.log.error(err);
-    process.exit(1);
-  }
-  fastify.log.info(`Server listeinng on ${address}`);
-});
+  app.listen(port, () => {
+    debug(`Example app listening on port ${port}!`);
+  });
+}());
+
+module.exports = app;
