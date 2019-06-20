@@ -1,7 +1,7 @@
 sudo: false
 
 env: 
-  - DB_ADDRESS=localhost:27017 DB_NAME=gams DB_USER=poe DB_PASSWORD=fortunato
+  - DB_ADDRESS=localhost:27017 DB_NAME=gams DB_USER=poe DB_PASSWORD=fortunato PORT=4044
 
 services: mongodb
 

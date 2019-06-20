@@ -5,11 +5,7 @@ const indexRouter = require('./routes/index');
 const gamesRouter = require('./routes/games');
 const db = require('./db');
 
-const {
-  PORT, DEBUG,
-} = process.env;
-debug.enabled = DEBUG;
-const port = PORT | 4044;
+debug.enabled = process.env.DEBUG;
 
 const app = express();
 
@@ -22,8 +18,8 @@ app.use('/games', gamesRouter);
     debug(err);
   });
 
-  app.listen(port, () => {
-    debug(`Example app listening on port ${port}!`);
+  app.listen(process.env.PORT, () => {
+    debug(`Example app listening on port ${process.env.PORT}!`);
   });
 }());
 
