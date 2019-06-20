@@ -18,8 +18,8 @@ app.use('/games', gamesRouter);
     debug(err);
   });
 
-  app.listen(process.env.PORT | 4044, () => {
-    debug(`Example app listening on port ${process.env.PORT | 4044}!`);
+  app.listen(process.env.PORT, () => {
+    debug(`Example app listening on port ${process.env.PORT}!`);
   });
 }());
 
