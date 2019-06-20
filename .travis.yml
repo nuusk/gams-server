@@ -6,7 +6,7 @@ node_js:
   - node
 
 install:
-  - npm ci
+  - npm install
 
 script:
   - npm test
