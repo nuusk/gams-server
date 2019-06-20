@@ -7,6 +7,22 @@ Create your profile and play games with your friends.
 | stage      | [stage](https://github.com/pietersweter/gams-server/tree/stage) | https://gams-stage.herokuapp.com |
 | production | [master](https://github.com/pietersweter/gams-server/tree/master) | https://gams-prod.herokuapp.com |
 
+## Getting started
+
+You can just use 
+
+```
+npm start
+```
+
+That will start the server on default port (4044), or alternatively you can execute 
+
+```
+node app.js -p <port_number>
+```
+
+to set your custom port.
+
 ## Development
 
 Development is split into two main branches.

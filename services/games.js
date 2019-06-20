@@ -9,13 +9,13 @@ exports.getAll = async () => {
   } catch (err) {
     throw err;
   }
-}
+};
 
-exports.getOne = async () => {
+exports.getOne = async (id) => {
   try {
-    const game = { title: `The Legend of Zelda: Majora's Mask` };
+    const game = { title: `${id} The Legend of Zelda: Majora's Mask` };
     return game;
   } catch (err) {
     throw err;
   }
-}
+};

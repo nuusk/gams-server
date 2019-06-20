@@ -1,12 +1,9 @@
-const games = require('../services/games');
+const express = require('express');
 
-async function routes(fastify) {
-  fastify.get('/games', async () => games.getAll());
+const router = express.Router();
 
-  fastify.get('/games/:id', async (request) => {
-    const { id } = request.params;
-    return challenges.getOne(id);
-  })
-}
+router.get('/', (req, res) => {
+  res.send({ hello: 'world' });
+});
 
-module.exports = routes;
+module.exports = router;
