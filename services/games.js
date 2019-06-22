@@ -1,9 +1,9 @@
 exports.getAll = async () => {
   try {
     const games = [
-      { title: 'The Legend of Zelda: Ocarina of Time' },
-      { title: 'Sonic the Hedgehog' },
-      { title: 'Dyna Blaster' },
+      { _id: 1, title: 'The Legend of Zelda: Ocarina of Time' },
+      { _id: 2, title: 'Sonic the Hedgehog' },
+      { _id: 3, title: 'Dyna Blaster' },
     ];
     return games;
   } catch (err) {
