@@ -16,5 +16,8 @@
   "rules": {
     "global-require": "off",
     "quotes": "off"
-  }
+  },
+  "plugins": [
+    "json"
+  ]
 }

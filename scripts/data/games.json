@@ -1,0 +1,14 @@
+[
+  {
+    "_id": 1,
+    "title": "triplock",
+    "gameURL": "https://www.github.com/pietersweter/triplock-client",
+    "imageURL": "https://raw.githubusercontent.com/pietersweter/triplock-client/master/public/assets/sprites/clemm-idle.gif"
+  },
+  {
+    "_id": 2,
+    "title": "dynablaster",
+    "gameURL": "https://www.apple.com",
+    "imageURL": "https://www.retrogamer.net/wp-content/uploads/2013/10/dyna_blaster_02.gif"
+  }
+]

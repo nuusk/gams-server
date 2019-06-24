@@ -1,17 +1,30 @@
-exports.getAll = async () => {
+const debug = require('debug')('gamesModel');
+const Game = require('../db/models/game');
+
+debug.enabled = process.env.DEBUG;
+
+exports.addOne = (game) => {
+  const newGame = new Game({
+    title: game.title,
+    gameURL: game.gameURL,
+    imageURL: game.imageURL,
+  });
+
+  return newGame.save().catch((e) => {
+    debug(e);
+  });
+};
+
+exports.getAll = () => {
   try {
-    const games = [
-      { _id: 1, title: 'The Legend of Zelda: Ocarina of Time' },
-      { _id: 2, title: 'Sonic the Hedgehog' },
-      { _id: 3, title: 'Dyna Blaster' },
-    ];
+    const games = Game.find({});
     return games;
   } catch (err) {
     throw err;
   }
 };
 
-exports.getOne = async (id) => {
+exports.getOne = (id) => {
   try {
     const game = { title: `${id} The Legend of Zelda: Majora's Mask` };
     return game;
