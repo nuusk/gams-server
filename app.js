@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const indexRouter = require('./routes/index');
 const gamesRouter = require('./routes/games');
+const profilesRouter = require('./routes/profiles');
 const db = require('./db');
 
 debug.enabled = process.env.DEBUG;
@@ -26,6 +27,7 @@ app.use(cors(corsOptions));
 
 app.use('/', indexRouter);
 app.use('/games', gamesRouter);
+app.use('/profiles', profilesRouter);
 
 (async function start() {
   await db.connect().catch((err) => {
