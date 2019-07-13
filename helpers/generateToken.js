@@ -1,4 +1,8 @@
+const debug = require('debug')('generateToken');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
+
+debug.enabled = process.env.DEBUG;
 
 const generateToken = (user) => {
   const payload = { sub: user.id };
@@ -6,4 +10,4 @@ const generateToken = (user) => {
   return jwt.sign(payload, secret);
 };
 
-export default generateToken;
+module.exports = generateToken;

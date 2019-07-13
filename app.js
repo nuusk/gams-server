@@ -2,6 +2,7 @@ require('dotenv').config();
 const debug = require('debug')('app');
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const indexRouter = require('./routes/index');
 const gamesRouter = require('./routes/games');
 const profilesRouter = require('./routes/profiles');
@@ -15,6 +16,7 @@ const whitelist = [process.env.CLIENT_ADDRESS];
 
 const corsOptions = {
   origin(origin, callback) {
+    debug(origin);
     if (whitelist.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
@@ -24,6 +26,11 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(bodyParser.urlencoded({
+  extended: true,
+}));
+app.use(bodyParser.json());
+
 
 app.use('/', indexRouter);
 app.use('/games', gamesRouter);
