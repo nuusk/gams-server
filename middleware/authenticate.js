@@ -1,13 +1,16 @@
+const debug = require('debug')('middleware/authenticate');
 const profiles = require('../services/profiles');
+
+debug.enabled = process.env.DEBUG;
 
 const isBearer = authorization => authorization.startsWith('Bearer ');
 
 const extractToken = authorization => authorization.split(' ')[1];
 
 const authenticate = (req, res, next) => {
-  const authorization = req.get('Authorization');
-  if (authorization && isBearer(authorization)) {
-    const token = extractToken(authorization);
+  const authorizationHeader = req.get('Authorization');
+  if (authorizationHeader && isBearer(authorizationHeader)) {
+    const token = extractToken(authorizationHeader);
     profiles.getUserFromToken(token)
       .then((user) => {
         req.user = user;
@@ -16,7 +19,7 @@ const authenticate = (req, res, next) => {
         res.status(401).json({ message: error.message });
       });
   } else {
-    res.status(401).json({ message: 'authentication token is required' });
+    res.status(401).json({ message: 'Authentication token is required' });
   }
 };
 

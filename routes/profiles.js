@@ -2,17 +2,16 @@ const express = require('express');
 const debug = require('debug')('profilesRouter');
 const profiles = require('../services/profiles');
 const generateToken = require('../helpers/generateToken');
+const authenticate = require('../middleware/authenticate');
 
 const { DEBUG } = process.env;
 debug.enabled = DEBUG;
 
 const router = express.Router();
 
-router.get('/me', async (req, res) => {
-  debug('dostalem requesta o /me');
+router.get('/me', authenticate, async (req, res) => {
   const { id, name, email } = req.user;
-  res.json(await profiles.getMe({ id, name, email }));
-  // res.send(await prof.getAll());
+  res.json({ id, name, email });
 });
 
 router.post('/login', async (req, res) => {
