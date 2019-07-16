@@ -1,4 +1,4 @@
-const debug = require('debug')('gamesModel');
+const debug = require('debug')('services/games');
 const Game = require('../db/models/game');
 
 debug.enabled = process.env.DEBUG;

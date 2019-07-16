@@ -5,7 +5,8 @@ require('dotenv').config();
 debug.enabled = process.env.DEBUG;
 
 const generateToken = (user) => {
-  const payload = { sub: user.id };
+  // eslint-disable-next-line no-underscore-dangle
+  const payload = { sub: user._id };
   const secret = process.env.SECRET_KEY;
   return jwt.sign(payload, secret);
 };
