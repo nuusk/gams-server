@@ -1,5 +1,3 @@
-process.env.NODE_ENV = 'test';
-
 const request = require('supertest');
 const chai = require('chai');
 const app = require('../app');

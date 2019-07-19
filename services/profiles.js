@@ -20,10 +20,15 @@ exports.login = ({ email, password }) => new Promise(async (resolve, reject) => 
   });
 });
 
-exports.createProfile = (attributes) => {
+exports.createProfile = attributes => new Promise((resolve, reject) => {
   const profile = new Profile(attributes);
-  return profile.save();
-};
+  profile.save((err, doc) => {
+    if (err) {
+      reject(err);
+    }
+    resolve(doc);
+  });
+});
 
 exports.getUserFromToken = (token) => {
   const secret = process.env.SECRET_KEY;

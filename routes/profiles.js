@@ -27,9 +27,13 @@ router.post('/login', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-  const profile = await profiles.createProfile(req.body);
-  const token = generateToken(profile);
-  res.status(201).json({ token, username: profile.name, email: profile.email });
+  try {
+    const profile = await profiles.createProfile(req.body);
+    const token = generateToken(profile);
+    res.status(201).json({ token, username: profile.name, email: profile.email });
+  } catch (err) {
+    res.status(409).json({ message: err.message });
+  }
 });
 
 module.exports = router;
