@@ -13,15 +13,12 @@ debug.enabled = process.env.DEBUG;
 
 const app = express();
 
-// app.use(cors(corsOptions));
-
 app.use(cors(corsOptions));
 
 app.use(bodyParser.urlencoded({
   extended: true,
 }));
 app.use(bodyParser.json());
-
 
 app.use('/', indexRouter);
 app.use('/games', gamesRouter);
