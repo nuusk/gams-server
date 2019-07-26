@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
   try {
     const profile = await profiles.createProfile(req.body);
     const token = generateToken(profile);
-    res.status(201).json({ token, username: profile.name, email: profile.email });
+    res.status(201).json({ token, username: profile.username, email: profile.email });
   } catch (err) {
     res.status(409).json({ message: err.message });
   }
