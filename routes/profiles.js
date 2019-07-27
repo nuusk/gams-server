@@ -2,6 +2,7 @@ const express = require('express');
 const debug = require('debug')('profilesRouter');
 const profiles = require('../services/profiles');
 const generateToken = require('../helpers/generateToken');
+const getDefaultAvatars = require('../helpers/getDefaultAvatars');
 const authenticate = require('../middleware/authenticate');
 
 const { DEBUG } = process.env;
@@ -12,6 +13,10 @@ const router = express.Router();
 router.get('/me', authenticate, async (req, res) => {
   const { id, name, email } = req.user;
   res.json({ id, name, email });
+});
+
+router.get('/avatars', async (req, res) => {
+  res.json(getDefaultAvatars());
 });
 
 router.post('/login', async (req, res) => {
