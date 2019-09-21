@@ -11,8 +11,12 @@ debug.enabled = DEBUG;
 const router = express.Router();
 
 router.get('/me', authenticate, async (req, res) => {
-  const { id, name, email } = req.user;
-  res.json({ id, name, email });
+  const {
+    id, username, email, avatarURL,
+  } = req.user;
+  res.json({
+    id, username, email, avatarURL,
+  });
 });
 
 router.get('/avatars', async (req, res) => {
