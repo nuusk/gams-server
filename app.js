@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const indexRouter = require('./routes/index');
 const gamesRouter = require('./routes/games');
 const profilesRouter = require('./routes/profiles');
+const tokensRouter = require('./routes/tokens');
 const corsOptions = require('./middleware/cors');
 const db = require('./db');
 
@@ -23,6 +24,7 @@ app.use(bodyParser.json());
 app.use('/', indexRouter);
 app.use('/games', gamesRouter);
 app.use('/profiles', profilesRouter);
+app.use('/tokens', tokensRouter);
 
 (async function start() {
   await db.connect().catch((err) => {
