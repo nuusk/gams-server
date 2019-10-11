@@ -6,11 +6,14 @@ const debug = require('debug')('db');
 const gamesService = require('../services/games');
 
 const {
-  DB_USER, DB_PASSWORD, DB_ADDRESS, DB_NAME, DEBUG,
+  DB_USER, DB_PASSWORD, DB_ADDRESS, DB_NAME, DEBUG_ENABLED,
 } = process.env;
-debug.enabled = DEBUG;
-const URL = `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_ADDRESS}/${DB_NAME}`;
 
+debug.enabled = true;
+// mongodb://poe:AMontillado44@ds341247.mlab.com:41247/gams
+const URL = `mongodb://edgar:AMontillado44@ds341247.mlab.com:41247/gams`;
+debug('xd');
+console.log('123');
 mongoose.connect(URL, { useNewUrlParser: true }, (err) => {
   if (err) debug(err);
   else {
