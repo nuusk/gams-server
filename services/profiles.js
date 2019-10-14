@@ -16,6 +16,7 @@ exports.createProfile = attributes => new Promise((resolve, reject) => {
 
 exports.updateProfile = (attributes) => new Promise((resolve, reject) => {
   return new Promise((resolve, reject) => {
+    // TODO: attributes filtration
     Object.assign(req.user, { ...attributes });
     user.save((err, doc) => {
       if (err) {
@@ -32,3 +33,5 @@ exports.getUserFromToken = (token) => {
     jwt.verify(token, secret, (err, payload) => (err ? reject(err) : resolve(payload)));
   }).then(payload => Profile.findById(payload.sub));
 };
+
+

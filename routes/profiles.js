@@ -38,7 +38,7 @@ router.patch('/', authenticate, async (req, res) => {
   try {
     const profile = await profiles.updateProfile(req.body);
     debug(profile);
-    res.status(204).json({ message: 'Profile updated' });
+    res.status(200).json({ message: 'Profile updated' });
   } catch (err) {
     res.status(409).json({ message: err.message });
   }
