@@ -14,10 +14,10 @@ exports.createProfile = attributes => new Promise((resolve, reject) => {
   });
 });
 
-exports.updateProfile = (attributes) => new Promise((resolve, reject) => {
+exports.updateProfile = (profile, attributes) => new Promise((resolve, reject) => {
   return new Promise((resolve, reject) => {
     // TODO: attributes filtration
-    Object.assign(req.user, { ...attributes });
+    Object.assign(profile, { ...attributes });
     user.save((err, doc) => {
       if (err) {
         reject(err);
