@@ -19,7 +19,6 @@ router.get('/me', authenticate, async (req, res) => {
   });
 });
 
-// do przerzucenia na zasob avatars
 router.get('/avatars', async (req, res) => {
   res.json(getDefaultAvatars());
 });
@@ -30,6 +29,16 @@ router.post('/', async (req, res) => {
     debug(profile);
     const token = tokens.generateToken(profile);
     res.status(201).json({ token, username: profile.username, email: profile.email });
+  } catch (err) {
+    res.status(409).json({ message: err.message });
+  }
+});
+
+router.patch('/', authenticate, async (req, res) => {
+  try {
+    const profile = await profiles.updateProfile(req.body);
+    debug(profile);
+    res.status(204).json({ message: 'Profile updated' });
   } catch (err) {
     res.status(409).json({ message: err.message });
   }

@@ -14,6 +14,18 @@ exports.createProfile = attributes => new Promise((resolve, reject) => {
   });
 });
 
+exports.updateProfile = (attributes) => new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
+    Object.assign(req.user, { ...attributes });
+    user.save((err, doc) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(doc);
+    });
+  });
+});
+
 exports.getUserFromToken = (token) => {
   const secret = process.env.SECRET_KEY;
   return new Promise((resolve, reject) => {
